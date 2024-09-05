@@ -1,0 +1,161 @@
+// function
+// 반응형 수치 계산
+$multiple: 1.5;
+@function clampFunc($num, $multiple: $multiple) {
+  @return clamp($num * 0.1rem, calc($num / 393 * 100vw), calc($num * 0.1rem * $multiple));
+}
+
+@function minFunc($num, $multiple: $multiple) {
+  @return min(calc($num / 393 * 100vw * 0.9), calc($num * 0.1rem * $multiple));
+}
+
+// mixin
+@mixin old-mobile{ // iphone 5 / SE(2016) 
+  @media (max-width: 374px){ 
+    @content;
+  }
+}
+
+/* mpa css */
+.map {
+  &-container {
+    position: relative;
+    overflow: hidden;
+    margin-top: 6rem;
+  }
+
+  &__floor {
+    &-container {
+      position: absolute;
+      right: clampFunc(20);
+      top: clampFunc(20);
+      @include old-mobile {
+        right: minFunc(20);
+        top: minFunc(20);
+      }
+      z-index: 10;
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: #dbdbdb;
+      border: 1px solid #dbdbdb;
+      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.10);
+      
+      li {
+        width: clampFunc(56);
+        height: clampFunc(48);
+        @include old-mobile {
+          width: minFunc(56);
+          height: minFunc(48);
+        }
+        background: #fff;
+
+        a {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          color: #222;
+          font: {
+            family: Roboto;
+            style: normal;
+            weight: 500;
+          }
+          font-size: clampFunc(16);
+          @include old-mobile {
+            font-size: minFunc(16);
+          }
+          line-height: 1.2;
+          cursor: pointer;
+        }
+
+        &.active {
+          background: #D90833;
+
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  &__img {
+    &-container {
+    }
+
+    &-list {
+      > div {
+        display: none;
+        
+        svg {
+          opacity: 0;
+          will-change: opacity;
+          transition: opacity 0.3s;
+          width: 100vw;
+          height: calc(100vh - 6.2rem); 
+          height: calc(100dvh - 6.2rem);
+        }
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  &__zoom {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: clampFunc(4);
+      position: absolute;
+      right: clampFunc(20);
+      bottom: clampFunc(20);
+      @include old-mobile {
+        gap: minFunc(4);
+        right: minFunc(20);
+        bottom: minFunc(20);
+      }
+      z-index: 10;
+
+      button {
+        display: flex;
+        width: clampFunc(56);
+        height: clampFunc(56);
+        @include old-mobile {
+          width: minFunc(56);
+          height: minFunc(56);
+        }
+        box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.10);
+        border-radius: 50%;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+        background: {
+          size: clampFunc(16) auto;
+          repeat: no-repeat;
+          position: center;
+        }
+        @include old-mobile {
+          background-size: minFunc(16) auto;
+        }
+        cursor: pointer;
+      }
+    }
+
+    &__btn {
+      &-in {
+        background: #222 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='18' viewBox='0 0 16 18' fill='none'%3E%3Cpath d='M6.54545 0.5H9.45455V17.5H6.54545V0.5Z' fill='white'/%3E%3Cpath d='M0 10.0625V7.22917H16V10.0625H0Z' fill='white'/%3E%3C/svg%3E");
+      }
+      &-out {
+        border: 1px solid #DBDBDB;
+        background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='4' viewBox='0 0 16 4' fill='none'%3E%3Cpath d='M0.5 2.91665V1.08331H15.5V2.91665H0.5Z' fill='black' stroke='black'/%3E%3C/svg%3E");
+      }
+    }
+  }
+}

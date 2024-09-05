@@ -1,0 +1,385 @@
+/* header */
+header{
+  &#st-header{
+    /* head-wrap */
+    .head-wrap{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 6rem;
+      background: var(--background-white);
+      display: grid;
+      grid-template-areas: "left center right";
+      grid-template-columns: 8.4rem auto 8.4rem;
+      z-index: 999;
+      box-sizing: border-box;
+      .head-{
+        &left,
+        &tit,
+        &right{
+          display: flex;
+          align-items: center;
+          height: 100%;
+          box-sizing: border-box;
+        }
+  
+        &left,
+        &right{
+          position: relative;
+          top: inherit;
+          left: inherit;
+          right: inherit
+        }
+  
+        &left{
+          grid-area: left;
+          justify-content: end;
+        }
+  
+        &tit{
+          justify-content: center;
+          grid-area: center;
+          margin: 0;
+          text-overflow: ellipsis;
+          color: #222;
+          font-size: 1.6rem;
+          font-weight: 700;
+          
+          .top-{
+            /* logo img type */
+            &logo{
+              display: block;
+              width: 13rem;
+              height: 2.4rem;
+              img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            /* logo list type */
+            &menu {
+              position: relative;
+              button {
+                position: relative;
+                display: block;
+                width: 13rem;
+                height: 2.4rem;
+                background: url(../images/common/logo.svg) 0 0 / contain no-repeat;
+                cursor: pointer;
+            
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: .4rem;
+                  right: -2.2rem;
+                  display: block;
+                  width: 1.6rem;
+                  height: 1.6rem;
+                  background: url(../images/common/icon_arrow_drop_down.svg) center / contain no-repeat;
+                  box-sizing: border-box;
+                  transition: transform 0.3s ease;
+                }
+              }
+            
+              .store-gate {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 10;
+                width: auto;
+                background-color: var(--background-white);
+                li {
+                  width: 100%;
+                  white-space: nowrap;
+                  box-sizing: border-box;
+                }
+              }
+            
+              &.active {
+                .store-gate {
+                  display: block;
+                }
+                
+                button {
+                  &::after {
+                    transform: rotate(180deg);
+                  }
+                }
+              }
+            }
+            
+          }
+        }
+  
+        &right{
+          grid-area: right;
+          justify-content: end;
+          margin-right: 2rem;
+        }
+      }
+
+      &-main{
+        grid-template-columns: 4.4rem auto 4.4rem;
+        box-sizing: border-box;
+        .head-left{
+          display: none;
+        }
+        .store-menu{
+          display: block !important;
+        }
+      }
+  
+      .btn-head-{
+        &back,
+        &menu,
+        &home{
+          box-sizing: border-box;
+          cursor: pointer;
+          margin: 0;
+          padding: 0;
+          &::after{
+            content: '';
+            display: block;
+            width: 2.4rem;
+            height: 2.4rem;
+            background-position: 0px 0px;
+          }
+        }
+  
+        &back{
+          &::after{
+            background: url(../images/common/icon_back.svg) no-repeat;
+          }
+        }
+
+        &home{
+          margin-left: 1.6rem;
+          &::after{
+            background: url(../images/common/icon_home.svg) no-repeat;
+          }
+        }
+  
+        &menu{
+          &::after{
+            background: url(../images/common/icon_menu.svg) no-repeat;
+          }
+        }
+      }
+    }
+    // head-wrap
+    
+    /* head-nav */ 
+    #head-nav{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+
+      &.open{
+        display: block;
+        z-index: 1000;
+        #menu-dim{
+          display: block;
+        }
+        .menu-container{
+          animation: openSlideMenu .2s ease-in forwards;
+        }
+      }
+      &.close{
+        display: none;
+        overflow-x: hidden;
+        z-index: 1000;
+        #menu-dim{
+          display: none;
+        }
+        .menu-container{
+          animation: closeSlideMenu .2s ease-out forwards;
+        }
+      }
+
+      #menu-dim {
+        display: none;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75);
+      }
+      
+      // menu-wrap
+      .menu-wrap{
+        width: 100%;
+        height: 100%;
+        .menu-container{
+          position: absolute;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          max-width: calc(100% - 4rem);
+          height: 100%;
+          background: #fff;
+          font-size: 1rem;
+          overflow-y: auto;
+
+          .menu-{
+            &head,
+            &list{
+              display: grid;
+              grid-template-columns: auto;
+            }
+
+            &head{
+              margin: 7.6rem 4rem 0;
+              .store-{
+                &logo{
+                  padding-bottom: 2rem;
+                  img{
+                    width: 12.9rem;
+                    height: 5.4rem;
+                  }
+                }
+                &info{
+                  font-family: "Morn", "Noto Sans KR", sans-serif;
+                  border-top: 1px solid #999;
+                  border-bottom: 1px solid #999;
+                  .info-{
+                    &hours{
+                      display: grid;
+                      grid-template-columns: auto auto;
+                      align-items: center;
+                      justify-content: flex-start;
+                      height: 4.6rem;
+                      font-size: 1.4rem;
+                      dt{
+                        color: var(--color-title);
+                        font-weight: 700;
+                        .custom-select{
+                          select{
+                            font-size: 1.4rem;
+                            color: var(--color-title);
+                            font-weight: 700;
+                          }
+                          // disabled 클래스가 있을 때 ::after 숨김
+                          &.disabled{
+                            select{
+                              padding-right: 0;
+                            }
+                            &::after {
+                              display: none;
+                            }
+                          }
+                        }
+                      }
+                      dd{
+                        color: var(--color-content1);
+                        font-weight: 500;
+                        margin: .4rem 0 0 1.4rem;
+                      }
+                    }
+                    &noti{
+                      border-top: 1px solid var(--line-border1);
+                      padding: 1.2rem 0;
+                      li{
+                        position: relative;
+                        font-family: "Noto Sans KR";
+                        font-size: 1.2rem;
+                        color: #aaa;
+                        font-weight: 500;
+                        line-height: 160%;
+                        letter-spacing: -0.24px;
+                        padding-left: .8rem;
+                        &::before{
+                          content: '';
+                          position: absolute;
+                          top: 50%;
+                          left: 0;
+                          transform: translateY(-50%);
+                          display: block;
+                          width: .2rem;
+                          height: .2rem;
+                          border-radius: 50%;
+                          background-color: #888;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &list{
+              margin: 5rem 4rem 0;
+              ul{
+                li{
+                  margin-bottom: 2.4rem;
+                  a{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    height: 2.8rem;
+                    line-height: 2.8rem;
+                    font-family: 'Noto Sans KR';
+                    font-size: 2rem;
+                    font-weight: 700;
+                    letter-spacing: -0.4px;
+                    color: var(--color-title);
+                    &::after{
+                      content: '';
+                      display: block;
+                      width: 1.6rem;
+                      height: 1.6rem;
+                      box-sizing: border-box;
+                      background: url(../images/common/icon_arrow1_right.svg) no-repeat;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .menu-close{
+            position: absolute;
+            top: 1.8rem;
+            right: 2rem;
+            button{
+              cursor: pointer;
+              &::after{
+                display: block;
+                content: '';
+                width: 2.4rem;
+                height: 2.4rem;
+                background: url(../images/common/icon_close.svg) no-repeat;
+              }
+            }
+          }
+        }
+      }
+      // menu-wrap //
+    }
+    // head-nav
+  }
+  @keyframes openSlideMenu {
+    0% {
+      right: -100%
+    }
+  
+    to {
+      right: 0
+    }
+  }
+
+  @keyframes closeSlideMenu {
+    0% {
+      right: 0
+    }
+
+    to {
+      right: -100%
+    }
+  }
+}

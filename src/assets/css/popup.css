@@ -1,0 +1,270 @@
+/*slide popup*/
+.popup-wrap {
+  position: fixed;
+  top: 100%;
+  top: 100lvh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow-y: scroll;
+  z-index: 1002;
+}
+.popup-wrap.slideUp {
+  -webkit-animation: slideUp 0.3s ease-out forwards;
+          animation: slideUp 0.3s ease-out forwards;
+}
+.popup-wrap.slideDown {
+  -webkit-animation: slideDown 0.5s forwards;
+          animation: slideDown 0.5s forwards;
+}
+.popup-wrap.popup-hidden {
+  display: none;
+}
+.popup-wrap .close-btn {
+  position: fixed;
+  right: 1.5rem;
+  display: block;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50px;
+  background: var(--background-white);
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+.popup-wrap .close-btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.4rem;
+  height: 3.4rem;
+  background: url("../images/common/icon_pop_close.svg") center no-repeat;
+}
+.popup-wrap .popup-conts img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.popup-wrap .popup-conts .pop- {
+  /* img area */
+  /* detail area */
+}
+.popup-wrap .popup-conts .pop-img {
+  width: 100%;
+  background: #ddd;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.popup-wrap .popup-conts .pop-detail {
+  width: 100%;
+}
+.popup-wrap .popup-conts .pop-detail .ev-top-info {
+  background: var(--background-white);
+}
+.popup-wrap .popup-conts .pop-detail .ev-top-info .tit {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.6px;
+  color: var(--color-title);
+  word-break: keep-all;
+  padding: 2.4rem 2.4rem 0;
+}
+.popup-wrap .popup-conts .pop-detail .ev-top-info .period {
+  font-family: "Morn", "Noto Sans KR", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 120%;
+  color: var(--color-red);
+  letter-spacing: -0.28px;
+  padding: 0 2.4rem;
+  word-break: keep-all;
+}
+.popup-wrap .popup-conts .pop-detail .ev-top-info::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.1rem;
+  background-color: #ddd;
+  margin: 4rem 0;
+  padding: 0;
+}
+.popup-wrap .popup-conts .pop-detail .ev-top-info:has(.period) .tit {
+  margin-bottom: 0.8rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.1rem;
+  background-color: #ddd;
+  margin: 4rem 0;
+  padding: 0;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info li {
+  display: grid;
+  grid-template-columns: 10rem auto;
+  font-size: 1.6rem;
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray);
+  margin: 0 2.4rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info li:not(:last-child) {
+  padding-bottom: 0.8rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info li strong {
+  font-weight: 700;
+  color: var(--color-title);
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info li span {
+  padding-left: 1rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info .guide-info {
+  grid-template-columns: none;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info .guide-info p {
+  padding-top: 1rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info .guide-info ul {
+  padding-top: 0.4rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info .guide-info ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0;
+  word-break: keep-all;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info .guide-info ul li::before {
+  content: "";
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--color-content1);
+  margin-right: 0.4rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-mid-info .guide-info ul li:not(:last-child) {
+  padding-bottom: 0.4rem;
+}
+.popup-wrap .popup-conts .pop-detail .ev-btm-detail {
+  padding: 0 2rem 8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--color-gray);
+  letter-spacing: -0.02rem;
+  word-break: keep-all;
+}
+.popup-wrap .popup-conts .pop-detail .ev-btm-detail img {
+  width: 100%;
+}
+.popup-wrap .popup-conts .pop-detail .ev-btm-detail img:not(:last-child) {
+  margin-bottom: 3.7rem;
+}
+.popup-wrap .popup-conts:not(:has(.pop-img)) .pop-detail {
+  padding-top: 6rem;
+}
+.popup-wrap#popup-map .popup-header {
+  position: fixed;
+  width: 100%;
+  height: 6rem;
+  display: grid;
+  grid-template-areas: "left center right";
+  grid-template-columns: 4.4rem auto 4.4rem;
+  width: 100%;
+  height: 6rem;
+  background-color: var(--background-white);
+  z-index: 1;
+  overflow: hidden;
+}
+.popup-wrap#popup-map .popup-header h1,
+.popup-wrap#popup-map .popup-header .close-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.popup-wrap#popup-map .popup-header h1 {
+  font-size: 1.6rem;
+  grid-area: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.popup-wrap#popup-map .popup-header .close-btn {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-area: center;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin-top: 1.8rem;
+  cursor: pointer;
+}
+.popup-wrap#popup-map .popup-header .close-btn::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url("../images/common/icon_close.svg") center/cover no-repeat;
+}
+@-webkit-keyframes slideUp {
+  from {
+    top: 100%;
+    top: 100lvh;
+  }
+  to {
+    top: 0;
+  }
+}
+@keyframes slideUp {
+  from {
+    top: 100%;
+    top: 100lvh;
+  }
+  to {
+    top: 0;
+  }
+}
+@-webkit-keyframes slideDown {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+    top: 100lvh;
+  }
+}
+@keyframes slideDown {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+    top: 100lvh;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .close-btn {
+    margin-right: 1.5rem;
+  }
+}
